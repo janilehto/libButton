@@ -20,14 +20,21 @@ class Button
   public:
     //Konstruktori joka liittää metodit valitulle tulolle
     Button(int pin);
+    Button(int pin, int keepTime);
     //Metodi joka kertoo painkkeen painalluksesta
     bool pressed();
+    bool released();
+    bool kept();
   //Yksityinen tieto
   private:
     //Mihin tuloon painike liitetään
     int _pin;
     //Tilatieto vanhasta painikkeen tilasta
-    int _prevState;
+    int _prevPState;
+    int _prevRState;
+    //Aikaleima
+    unsigned long _timeStamp;
+    unsigned long _keepTime;
 };
 
 #endif
